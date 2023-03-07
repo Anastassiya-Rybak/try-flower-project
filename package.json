@@ -4,6 +4,7 @@
   "homepage": "https://anastassiya-rybak.github.io/try-flower-project/",
   "private": true,
   "scripts": {
+    "deploy": "gh-pages -d dist",
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
