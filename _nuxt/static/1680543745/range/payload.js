@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/range", {data:[{}],fetch:{},mutations:void 0});
