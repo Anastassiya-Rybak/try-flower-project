@@ -24,9 +24,9 @@
         </nuxt-link>
       </div>
     </div>
-    <form class="contacts__form" action="">
+    <form class="contacts__form" action="" method="POST">
       <label for="ClientTel">Оставьте свой номер и мы свяжемся с Вами.</label>
-      <input v-model="phone" class="contacts__form__tel" type="text" @keyup.enter="isANum, sentOn">
+      <input v-model="phone" class="contacts__form__tel" name="ClientTel" type="tel" maxlength="11" @keyup.enter="isANum, sentOn">
       <span v-if="someErrors" class="error">Не верно введены данные</span>
       <input class="contacts__form__btn" type="button" :value="sendOrSent.text" :style="{background: sendOrSent.backColor}" @click="isANum($event), sentOn($event)">
     </form>
@@ -47,7 +47,7 @@ export default {
     isANum(event) {
       event.preventDefault();
       const regex = /[a-zа-яё]/;
-      if(regex.test(this.phone) || this.phone.length <= 0 || (this.phone.length <= 11 && this.phone.length >= 13 && !this.phone.includes('+'))){
+      if(regex.test(this.phone) || this.phone.length <= 0 || this.phone.length < 11 || this.phone.includes('+')){
         this.someErrors=true;
       } else {
         this.someErrors=false;
